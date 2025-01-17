@@ -12,10 +12,6 @@ source "src/memory/Kconfig"
 source "src/trace/Kconfig"
 source "src/device/Kconfig"
 
-config NPC_OPEN_SIM
-  bool 
-  prompt "(npc) Open Simulation"
-  default n
 config DIFFTEST
   bool 
   prompt "Open Difftest"

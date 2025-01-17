@@ -1,4 +1,4 @@
-//CPU模块
+//CPU模块, 不可修改，你的处理器需要在此实例化各个模块
 module CPU(
 	input wire clk,
 	input wire rst,
