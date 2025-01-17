@@ -5,19 +5,8 @@
 #include <sys/types.h>
 #include <verilated.h>
 #include <verilated_vcd_c.h>
-
 #include <npc.h>
 #include <npc_CPU.h>
-#include <npc_REGU.h>
-#include <npc_PCU.h>
-#include <npc_MEMU.h>
-#include <npc_WBU.h>
-#include <npc_IDU.h>
-#include <npc_CTRL.h>
-#include <npc_CSR.h>
-
-
-#include <cpu.h>
 #include <sim_state.h>
 #include <common.h>
 #include <defs.h>
