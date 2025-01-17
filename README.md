@@ -1,8 +1,13 @@
 
 
 ## 一. 下载工具
-`verilator v5.008` 
-``
+安装`verilator v5.008` ——搜索verilator安装5.008
+
+安装`gtkwave`
+
+安装`apt-get install g++-riscv64-linux-gnu binutils-riscv64-linux-gnu`
+
+其他需要安装的工具，可以在编译报错的时候使用AI工具。
 
 ## 一. 设置环境变量
 
