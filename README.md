@@ -14,9 +14,13 @@
 我们首要先设置三个环境变量`CPU_HOME`, `AM_HOME`, `SIM_HOME`, `TEST_HOME`
 
 export CPU_HOME=cpu-single-cycle目录的绝对路径
+
 export SIM_HOME=$CPU_HOME/simulator
+
 export AM_HOME=$CPU_HOME/abstract-machine
+
 export TEST_HOME=$CPU_HOME/software-test
+
 ## 二. 运行模拟器和测试程序
 
 1.运行menuconfig配置文件
