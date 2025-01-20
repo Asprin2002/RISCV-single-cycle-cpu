@@ -7,7 +7,7 @@ Verilog_DIR:=$(SINGLE_CYCLE_CPU_DIR)
 
 
 
-TOPNAME :=CPU
+TOPNAME :=AAA
 PREFIX_NAME:=npc
 
 TOPNAME_FLAG = --top-module $(TOPNAME)

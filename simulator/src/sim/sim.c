@@ -6,7 +6,6 @@
 #include <verilated.h>
 #include <verilated_vcd_c.h>
 #include <npc.h>
-#include <npc_CPU.h>
 #include <sim_state.h>
 #include <common.h>
 #include <defs.h>
@@ -64,7 +63,7 @@ void npc_reset(int n) {
 
 void npc_init() {
   IFDEF(CONFIG_NPC_OPEN_SIM, npc_open_simulation());  
-  npc_reset(3);
+  npc_reset(1);
   update_cpu_state();
   if(cpu.pc != 0x80000000){
     npc_close_simulation();
@@ -82,7 +81,7 @@ void execute(uint64_t n){
     npc_single_cycle();                         
     word_t cur_pc = cpu.pc;
     update_cpu_state();
-    IFDEF(CONFIG_ITRACE, instr_trace(cur_pc));
+ //   IFDEF(CONFIG_ITRACE, instr_trace(cur_pc));
     IFDEF(CONFIG_DIFFTEST, difftest_step(cur_pc, cur_pc + 4));  
   }
 }

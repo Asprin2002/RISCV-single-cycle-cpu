@@ -1,4 +1,4 @@
-module CPU(
+module AAA(
 	input wire clk,
 	input wire rst,
 
