@@ -12,15 +12,17 @@ module REGU
 	input wire 	[REG_WIDTH - 1	:0]			IDU_i_rd,
 	input wire  [WIDTH - 1		:0] 		IDU_i_valW,
 	output wire [WIDTH - 1		:0] 		REGU_o_valA,
-	output wire [WIDTH - 1		:0] 		REGU_o_valB,
-
-	output wire    [31:0]REGU_o_regfile[31:0]
+	output wire [WIDTH - 1		:0] 		REGU_o_valB
 );	
 reg [31:0] regfile[31:0];
 assign REGU_o_valA = regfile[IDU_i_rs1];
 assign REGU_o_valB = regfile[IDU_i_rs2];
-import "DPI-C" function void dpi_ebreak		(input int pc);
+import "DPI-C" function void dpi_ebreak			(input int pc);
+import "DPI-C" function void dpi_read_regfile(input logic [31 : 0] a []);
 
+initial begin
+	dpi_read_regfile(regfile);
+end
 always @(posedge clk) begin
 	if(rst) begin
 		regfile[0] <= 32'h0;
@@ -30,11 +32,6 @@ always @(posedge clk) begin
 	end
 end
 
-genvar i;
-generate
-    for (i = 0; i < 32; i = i + 1) begin : gen_regfile
-        assign REGU_o_regfile[i] = regfile[i];
-    end
-endgenerate
+
 
 endmodule //

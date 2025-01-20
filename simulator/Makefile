@@ -1,3 +1,7 @@
+TOPNAME :=CPU
+PREFIX_NAME:=npc
+
+
 
 SINGLE_CYCLE_CPU_DIR=$(CPU_HOME)/IP/single-cycle-cpu
 MYCPU_DIR 			=$(CPU_HOME)/IP/mycpu
@@ -5,10 +9,6 @@ MYCPU_DIR 			=$(CPU_HOME)/IP/mycpu
 SRC_DIR:=$(SIM_HOME)/src
 Verilog_DIR:=$(SINGLE_CYCLE_CPU_DIR)
 
-
-
-TOPNAME :=AAA
-PREFIX_NAME:=npc
 
 TOPNAME_FLAG = --top-module $(TOPNAME)
 PREFIX_FLAG  = --prefix $(PREFIX_NAME)

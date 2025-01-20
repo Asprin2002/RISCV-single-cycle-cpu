@@ -20,8 +20,9 @@ static bool       g_print_step = false;
 
 static TOP_NAME dut;  			    //CPU
 static VerilatedVcdC *m_trace;  //仿真波形
-static word_t sim_time = 0;			//时间
-static word_t clk_count = 0;
+static word_t     sim_time  = 0;//时间
+static word_t     clk_count = 0;
+extern uint32_t * reg_ptr;
 
 void npc_get_clk_count(){
   printf("处理器运行了%u个clk\n", clk_count);
@@ -41,12 +42,10 @@ void npc_close_simulation(){
 }
 
 
+
 void update_cpu_state(){
   cpu.pc = dut.cur_pc_for_simulator;
-  for(int i = 0; i < GPR_NUM; ++i){
-    cpu.gpr[i] = dut.regfile_for_simulator[i];
-  }
-
+  memcpy(&cpu.gpr[0], reg_ptr, 4 * 32);
 }
 void npc_single_cycle() {
   dut.clk = 0;  dut.eval();   
@@ -81,7 +80,7 @@ void execute(uint64_t n){
     npc_single_cycle();                         
     word_t cur_pc = cpu.pc;
     update_cpu_state();
- //   IFDEF(CONFIG_ITRACE, instr_trace(cur_pc));
+    IFDEF(CONFIG_ITRACE, instr_trace(cur_pc));
     IFDEF(CONFIG_DIFFTEST, difftest_step(cur_pc, cur_pc + 4));  
   }
 }

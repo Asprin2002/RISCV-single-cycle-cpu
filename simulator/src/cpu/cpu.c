@@ -3,6 +3,7 @@
 #include <cpu.h>
 
 CPU_state cpu; 
+uint32_t  *reg_ptr= NULL;
 
 
 const char *regs[] = {

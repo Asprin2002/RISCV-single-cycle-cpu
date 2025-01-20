@@ -1,9 +1,8 @@
-module AAA(
+module CPU(
 	input wire clk,
 	input wire rst,
 
-	output wire [31:0] cur_pc_for_simulator,
-	output wire [31:0] regfile_for_simulator[31:0]
+	output wire [31:0] cur_pc_for_simulator
 );
 
 //CTRL
@@ -88,8 +87,7 @@ IDU u_IDU(
 	.WBU_i_valW      (WBU_o_valW      ),
 	.IDU_o_valA      (IDU_o_valA      ),
 	.IDU_o_valB      (IDU_o_valB      ),
-	.IDU_o_valC      (IDU_o_valC      ),
-	.IDU_o_regfile   (regfile_for_simulator)
+	.IDU_o_valC      (IDU_o_valC      )
 );
 
 EXU u_EXU(

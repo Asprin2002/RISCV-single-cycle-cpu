@@ -11,9 +11,7 @@ module IDU
 	input wire  [WIDTH - 1:0] WBU_i_valW, 
 	output wire [WIDTH - 1:0] IDU_o_valA,
 	output wire [WIDTH - 1:0] IDU_o_valB,
-	output wire [31:0] 		  IDU_o_valC,
-	output wire [31:0]		  IDU_o_regfile[31:0]
-
+	output wire [31:0] 		  IDU_o_valC
 );
 wire [WIDTH - 1:0] 		instr   = IFU_i_instr;
 wire [REG_WIDTH - 1:0]  rs1  = instr[19:15];
@@ -32,8 +30,7 @@ REGU u_REGU(
 	.IDU_i_rd      (rd      		),
 	.IDU_i_valW    (WBU_i_valW    	),
 	.REGU_o_valA   (IDU_o_valA   	),
-	.REGU_o_valB   (IDU_o_valB   	),
-	.REGU_o_regfile(IDU_o_regfile	)
+	.REGU_o_valB   (IDU_o_valB   	)
 );
 
 

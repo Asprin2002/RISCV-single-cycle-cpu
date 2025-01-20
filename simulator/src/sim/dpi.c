@@ -1,6 +1,9 @@
 #include <common.h>
+#include <cstdint>
 #include <cstdio>
 #include <defs.h>
+#include "verilated_dpi.h" // For VerilatedDpiOpenVar and other DPI related definitions
+
 
 
 
@@ -33,3 +36,8 @@ extern "C" void dpi_mem_write(int addr, int data, int len){
 }
 
 
+
+extern uint32_t  *reg_ptr;
+extern "C" void dpi_read_regfile(const svOpenArrayHandle r) {
+  reg_ptr = (uint32_t *)(((VerilatedDpiOpenVar*)r)->datap());
+}
