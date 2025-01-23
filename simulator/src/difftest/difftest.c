@@ -108,21 +108,39 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
 //ref是参考处理器执行完对应指令后的数据
 //pc是执行指令的地址
 static void checkregs(CPU_state *ref, vaddr_t pc) {
-  if(ref->pc != cpu.pc){
-    printf("[NPC] Difftest Error: 在执行完pc=[%x]指令之后,[参考处理器]和[你的处理器]对比出现不一致:\n", pc);
-    printf("[参考处理器.pc]=0x%x, [你的处理器.pc]=0x%x\n", cpu.pc, ref->pc);
-    npc_close_simulation();
-    exit(1);
+  bool is_pc_bad  = ref->pc != cpu.pc;
+  bool is_gpr_bad = false;
+  int bad_gpr_idx = -1;
 
-  }
   for(int i = 0; i < 32; ++i){
-    if(ref->gpr[i] != cpu.gpr[i]){  
-      printf("[NPC] Difftest Error: 在执行完pc=[%x]指令之后,[参考处理器]和[你的处理器]对比出现不一致:\n", pc);      
-      printf("[参考处理器.%s]=0x%x, [你的处理器.%s]=0x%x\n", reg_name(i), ref->gpr[i], reg_name(i), gpr(i));
-      npc_close_simulation();
-      exit(1);
+    if(ref->gpr[i] != cpu.gpr[i]){
+      is_gpr_bad = 1;
+      bad_gpr_idx = i;
     }
   }
+  bool difftest_is_bad = is_pc_bad || is_gpr_bad;
+
+  if(difftest_is_bad){
+    printf("处理器对比出错,在执行完pc=[%x]这条指令后,[参考处理器]和[你的处理器]的寄存器状态对比出现不一致:\n", pc);
+    if(is_pc_bad){
+      printf("[参考处理器].pc=0x%x, [你的处理器].pc=0x%x\n", cpu.pc, ref->pc);
+    }else if(is_gpr_bad){
+      printf("[参考处理器].%s=0x%x, [你的处理器].%s=0x%x\n", reg_name(bad_gpr_idx), ref->gpr[bad_gpr_idx], reg_name(bad_gpr_idx), gpr(bad_gpr_idx));
+    }
+    printf("\n--------->下面是[参考处理器]和[你的处理器]的所有寄存器状态\n");
+    for(int i = 0; i < 32; ++i){
+      if(ref->gpr[i] != cpu.gpr[i]){ printf("------>寄存器状态不一致:");}
+      printf("[参考处理器].%s=0x%x, [你的处理器].%s=0x%x\n", reg_name(i), ref->gpr[i], reg_name(i), gpr(i));
+    }
+    npc_close_simulation();
+    exit(1);
+  }
+
+
+
+
+
+
 }
 
 
