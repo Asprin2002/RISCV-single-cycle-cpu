@@ -1,9 +1,9 @@
-TOPNAME :=CPU
+TOPNAME :=cpu_top
 PREFIX_NAME:=npc
 
 
 
-SINGLE_CYCLE_CPU_DIR=$(CPU_HOME)/IP/single-cycle-cpu
+SINGLE_CYCLE_CPU_DIR=$(CPU_HOME)/IP/single-cycle-cpu-master
 MYCPU_DIR 			=$(CPU_HOME)/IP/mycpu
 
 SRC_DIR:=$(SIM_HOME)/src

@@ -1,4 +1,9 @@
 *
+.*
+_*
+*~
+build/
+
 !*/
 !*.h
 !*.c
@@ -8,8 +13,6 @@
 !README
 !README.md
 !LICENSE
-.*
-_*
-*~
-build/
+!riscv-tests-am
 !.gitignore
+
