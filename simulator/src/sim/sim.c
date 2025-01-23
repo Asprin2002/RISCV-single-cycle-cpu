@@ -66,7 +66,7 @@ void npc_init() {
   update_cpu_state();
   if(cpu.pc != 0x80000000){
     npc_close_simulation();
-    Assert(cpu.pc== 0x80000000, "npc初始化之后, cpu.pc的值应该为0x80000000");
+    Assert(cpu.pc== 0x80000000, "[你的处理器]在复位/初始化之后, pc值应该为0x80000000");
   }
 }
 
