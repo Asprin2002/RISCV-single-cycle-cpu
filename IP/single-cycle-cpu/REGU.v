@@ -31,7 +31,10 @@ always @(posedge clk) begin
 		regfile[IDU_i_rd] <= IDU_i_valW;
 	end
 end
-
-
-
 endmodule //
+
+
+//riscv五级流水线的数据冲突
+
+//分支预测错误
+//我预测的是不跳转，如果发生跳转
