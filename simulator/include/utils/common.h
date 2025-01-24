@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
-#include <open_sim_difftest.h>
+#include <sim_difftest.h>
 
 #define __GUEST_ISA__ riscv32
 
