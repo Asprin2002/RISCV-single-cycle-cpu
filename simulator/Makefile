@@ -2,13 +2,9 @@ TOPNAME :=cpu_top
 CPU_DIR :=$(CPU_HOME)/IP/single-cycle-cpu
 
 
-
-
-
-
 PREFIX_NAME:=npc
 SRC_DIR:=$(SIM_HOME)/src
-Verilog_DIR:=$(SINGLE_CYCLE_CPU_DIR)
+Verilog_DIR:=$(CPU_DIR)
 TOPNAME_FLAG = --top-module $(TOPNAME)
 PREFIX_FLAG  = --prefix $(PREFIX_NAME)
 
@@ -16,7 +12,7 @@ VL_ROOT_HEADER=\\\"$(PREFIX_NAME).h\\\"
 
 
 VERILATOR = verilator
-VERILATOR_CFLAGS += -MMD --build -j 8 -trace -cc -O0 --x-assign fast --x-initial fast --noassert -I$(CPU_HOME)
+VERILATOR_CFLAGS += -MMD --build -j 8 -trace -cc -O0 --x-assign fast --x-initial fast --noassert -I$(CPU_DIR)
 VERILATOR_CFLAGS += $(TOPNAME_FLAG)
 VERILATOR_CFLAGS += $(PREFIX_FLAG)
 
