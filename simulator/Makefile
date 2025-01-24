@@ -4,7 +4,7 @@ CPU_DIR :=$(CPU_HOME)/IP/single-cycle-cpu
 
 PREFIX_NAME:=npc
 SRC_DIR:=$(SIM_HOME)/src
-Verilog_DIR:=$(CPU_DIR)
+
 TOPNAME_FLAG = --top-module $(TOPNAME)
 PREFIX_FLAG  = --prefix $(PREFIX_NAME)
 
@@ -25,7 +25,7 @@ default: $(BIN)
 $(shell mkdir -p $(BUILD_DIR))
 
 # project source
-VSRCS = $(shell find $(abspath $(Verilog_DIR)) -name "*.v")
+VSRCS = $(shell find $(abspath $(CPU_DIR)) -name "*.v")
 CSRCS = $(shell find $(abspath $(SRC_DIR)) -name "*.c" -o -name "*.cpp" -o -name "*.cc")
 #header 
 
