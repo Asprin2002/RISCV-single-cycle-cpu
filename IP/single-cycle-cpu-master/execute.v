@@ -18,7 +18,7 @@ alu alu_module(
 	.opcode_info_i     (opcode_info_i    ),
 	.alu_info_i        (alu_info_i       ),
 	.branch_info_i     (branch_info_i    ),
-        .load_store_info_i (load_store_info_i),
+	.load_store_info_i (load_store_info_i),
 
 	.pc_i              (pc_i               ),
 	.rs1_data_i        (regfile_rs1_rdata_i),

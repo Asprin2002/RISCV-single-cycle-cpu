@@ -1,7 +1,7 @@
 
 module decode(
         input          clk,
-	input          rst,
+		input          rst,
         input  [31:0]  inst_i,
 	
 	//from write back stage

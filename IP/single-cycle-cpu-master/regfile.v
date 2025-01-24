@@ -1,6 +1,6 @@
 module regfile(
-        input            clk,
-        input            rst,	
+	input            clk,
+	input            rst,	
 	//from decode
 	input   [ 4:0]   rs1_id_i,
 	input   [ 4:0]   rs2_id_i,
