@@ -5,7 +5,7 @@
 #include <defs.h>
 
 void instr_trace(word_t pc) {
-#ifdef CONFIG_DIFFTEST
+#ifdef CONFIG_ITRACE
     Decode s;
     s.pc = pc;
     s.inst_val = pmem_read(pc, 4);
