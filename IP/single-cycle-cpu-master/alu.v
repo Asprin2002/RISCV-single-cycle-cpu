@@ -3,7 +3,7 @@ module alu(
 	   input  [9:0]   opcode_info_i,
 	   input  [9:0]   alu_info_i,
 	   input  [5:0]   branch_info_i,	   
-	   input  [7:0]   load_store_info_i,
+	   //input  [7:0]   load_store_info_i,
 	   
 	   input  [31:0]  pc_i,
 	   input  [31:0]  rs1_data_i,
